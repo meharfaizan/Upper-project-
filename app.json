@@ -9,13 +9,13 @@
   "repository": "https://github.com/CodeXBotz/File-Sharing-Bot",
   "logo": "https://telegra.ph/file/14d3013fda21281c54b61.jpg",
   "env": {
-    "TG_BOT_TOKEN": {
+    "BOT_TOKEN": {
       "description": "Your Bot token, Get it from @Botfather",
       "value": ""
     },
-    "OWNER_ID": {
+    "MONGO_URL": {
       "description": "An integer of consisting of your owner ID",
-      "value": "1250450587"
+      "value": ""
     }
   }
 }
