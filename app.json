@@ -1,0 +1,25 @@
+{
+    "name": "encode bot",
+    "description": "encode bot using aria as engine",
+    "logo": "https://telegra.ph/file/a42546af86d48c129c0f4.jpg",
+    "keywords": [
+      "bot",
+      "telegram",
+      "python"
+    ],
+    "repository": "https://github.com/yuno74/TorrentLeechX",
+    "website": "https://github.com/yuno74/TorrentLeechX",
+    "success_url": "https://t.me/arata74",
+    "stack": "container",
+    "env": {
+      },
+      "BOT_TOKEN": {
+        "description": "The telegram bot token that you get from @BotFather.",
+        "required": true
+      },
+      "MONGO_URL": {
+        "description": "Get at https://my.telegram.org/apps",
+        "required": true
+    }
+  }
+}
