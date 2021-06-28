@@ -1,25 +1,21 @@
 {
-    "name": "encode bot",
-    "description": "encode bot using aria as engine",
-    "logo": "https://telegra.ph/file/a42546af86d48c129c0f4.jpg",
-    "keywords": [
-      "bot",
-      "telegram",
-      "python"
-    ],
-    "repository": "https://github.com/yuno74/1080p",
-    "website": "https://github.com/yuno74/1080p",
-    "success_url": "https://t.me/arata74",
-    "stack": "container",
-    "env": {
-      },
-      "BOT_TOKEN": {
-        "description": "The telegram bot token that you get from @BotFather.",
-        "required": true
-      },
-      "MONGO_URL": {
-        "description": "Get at https://my.telegram.org/apps",
-        "required": true
+  "name": "TG File Sharing Bot",
+  "description": "file sharing bot store posts and it can access by special links",
+  "keywords": [
+    "telegram",
+    "file",
+    "sharing"
+  ],
+  "repository": "https://github.com/CodeXBotz/File-Sharing-Bot",
+  "logo": "https://telegra.ph/file/14d3013fda21281c54b61.jpg",
+  "env": {
+    "TG_BOT_TOKEN": {
+      "description": "Your Bot token, Get it from @Botfather",
+      "value": ""
+    },
+    "OWNER_ID": {
+      "description": "An integer of consisting of your owner ID",
+      "value": "1250450587"
     }
   }
 }
