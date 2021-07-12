@@ -29,7 +29,7 @@ def get_codec(filepath, channel="v:0"):
 
 def encode(filepath):
     basefilepath = os.path.splitext(filepath)[0]
-    output_filepath = basefilepath + ".HEVC" + ".mp4"
+    output_filepath = basefilepath + " AVC" + ".mp4"
     assert output_filepath != filepath
     if os.path.isfile(output_filepath):
         logging.info('Skipping "{}": file already exists'.format(output_filepath))
@@ -47,21 +47,30 @@ def encode(filepath):
             return None
         else:
             # Copy stream to hvc1
-            video_opts = "-c:v copy -tag:v hvc1"
+            video_opts = "-c:v copy -tag:v avc1"
     else:
-        # Transcode to h265 / hvc1
-        video_opts = "-c:v libx265 -crf 28 -tag:v hvc1 -preset fast -threads 8"
-    # Get the audio channel codec
-    audio_codec = get_codec(filepath, channel="a:0")
-    if audio_codec == []:
-        audio_opts = ""
-    elif audio_codec[0] == "aac":
-        audio_opts = "-c:a copy"
-    else:
+        # video option to h265 / hvc1
+        codec_opts = "-c:v libx264"
+        profile_opts = "-profile:v high"
+        tag_opts =  "-tag:v avc1"
+        tune_opts = "-tune animation"
+        lvl_opts = "-level 3.1"
+        crf_opts = "-crf 24"
+        preset_opts = "-preset slow"
+        Resolution_opts = "-vf  scale=1280:720"
+        core_opts = "-threads 8"
         audio_opts = "-c:a aac -b:a 128k"
     call(
         ["ffmpeg", "-i", filepath]
-        + video_opts.split()
+        + codec_opts.split()
+        + profile_opts.split()
+        + crf_opts.split()
+        + tag_opts.split()
+        + preset_opts.split()
+        + lvl_opts.split()
+        + tune_opts.split()
+        + Resolution_opts.split()
+        + core_opts.split()
         + audio_opts.split()
         + [output_filepath]
     )
