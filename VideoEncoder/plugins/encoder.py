@@ -12,7 +12,7 @@ async def encoder(event):
     if event.media.document and event.media.document.mime_type not in video_mimetype:
         return await event.reply("`Invalid Video !\nMake sure its a valid video file.`")
     await event.reply(
-        f"`Added to queue in position {len(data)}...\nKindly be patient...`"
+        f"`✅ Added to queue\nPosition: {len(data)}\n\n🥺 Kindly be patient...\n\n#queue`"
     )
     data.append(event)
     if len(data) == 1:
