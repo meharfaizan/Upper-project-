@@ -15,16 +15,16 @@ async def on_task_complete():
 
 async def add_task(event):
     try:
-        msg = await event.reply("`Downloading video...`")
+        msg = await event.reply("🟡 Downloading video...🟡\n\n#downloading`")
         filepath = await event.download_media(download_dir)
-        await msg.edit("`Encoding video...`")
+        await msg.edit("`🟣 Encoding video... 🟣\n\n#encoding`")
         new_file = encode(filepath)
         if new_file:
-            await msg.edit("`Video Encoded, getting metadata...`")
+            await msg.edit("`🔵 Getting metadata...🔵`")
             duration = get_duration(new_file)
             thumb = get_thumbnail(new_file, download_dir, duration / 4)
             width, height = get_width_height(new_file)
-            await msg.edit("`Uploading video...`")
+            await msg.edit("`⚪ Uploading video...⚪\n\n#uploading`")
             await event.client.send_file(
                 event.chat_id,
                 file=new_file,
@@ -36,12 +36,12 @@ async def add_task(event):
             )
             remove(new_file)
             remove(thumb)
-            await msg.edit("`Video Encoded to x265`")
+            await msg.edit("`🟢 Video Encoded 🟢\n\n#encoded`")
         else:
             await msg.edit(
-                "`Something wents wrong while encoding your file. Make sure it is not already in HEVC format.`"
+                "`🔴 Something wents wrong while encoding your file.`"
             )
             remove(filepath)
     except Exception as e:
-        await msg.edit(f"**ERROR**:\n`{e}`")
+        await msg.edit(f"**🔴 ERROR 🔴**:\n\n`{e}\n\n#error`")
     await on_task_complete()
